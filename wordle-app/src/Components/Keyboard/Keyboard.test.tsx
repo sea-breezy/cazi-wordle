@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import Keyboard from './Keyboard';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
 test('renders keyboard and has all keys', () => {
-    render(<Keyboard/>)
-    let Keyboard = screen.getByRole('generic')
-    
-    expect(Keyboard).toHave
-    expect(props.handleClick).toHaveBeenCalled();
-    expect(gotButton).toHaveClass('cool-button');
+    render(<Keyboard>
+        <div data-testid='cheese'>test</div>
+        </Keyboard>)
+    screen.debug()
+    expect(Keyboard).toHaveLength(1)
+    let div = screen.getByTestId('cheese');
+    expect(div).toHaveTextContent('test');
 })
 
-//find out how to 
+export {}
